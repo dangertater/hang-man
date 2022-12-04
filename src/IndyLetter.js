@@ -1,5 +1,11 @@
 import React from "react"
 
-export default function IndyLetter() {
-	return <div>IndyLetter</div>
+let IndyLetterGenerator = () => {}
+
+export default function IndyLetter(props) {
+	return (
+		<>
+			<div></div>
+		</>
+	)
 }

@@ -1,5 +1,6 @@
 import React from "react"
-import IndyLetter from "react"
+import IndyLetter from "./IndyLetter"
+import test from "./test"
 
 function App() {
 	let alphabet = [
@@ -32,9 +33,9 @@ function App() {
 	]
 	return (
 		<>
-			<div></div>
+			<div>asdf</div>
 			<div className="letter-container">
-				<IndyLetter alpahbet={alphabet}></IndyLetter>
+				<IndyLetter alphabet={alphabet} />
 			</div>
 		</>
 	)
