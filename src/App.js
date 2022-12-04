@@ -1,5 +1,5 @@
 import React from "react"
-import IndyLetter from "./IndyLetter"
+import IndyLetterGen from "./IndyLetterGen"
 import test from "./test"
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
 		<>
 			<div>asdf</div>
 			<div className="letter-container">
-				<IndyLetter alphabet={alphabet} />
+				<IndyLetterGen alphabet={alphabet} />
 			</div>
 		</>
 	)
