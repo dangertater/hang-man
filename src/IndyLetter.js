@@ -18,13 +18,7 @@ export default function IndyLetter(props) {
 	// }
 	return (
 		<>
-			test{}
-			<button
-				key={`button${props.mappedLetter}`}
-				onClick={(e) => {
-					// checkAgainstSolution(props.mappedLetter)
-				}}
-			>
+			<button key={`button${props.mappedLetter}`} onClick={(e) => {}}>
 				{props.mappedLetter}
 			</button>
 		</>

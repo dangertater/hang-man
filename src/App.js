@@ -1,16 +1,10 @@
-import React, { useState, createContext } from "react"
+import React, { useState } from "react"
 import IndyLetterGen from "./IndyLetterGen"
 import IndySolutionLetter from "./IndySolutionLetter"
-import SolutionLengthSlider from "./SolutionLengthSlider"
-import test from "./test"
-
-//I have veered in two directions
-//----one in which the input window sets the solution word, and one in which a random word is generated random series of letters really, based off inputWindows number
-//----either way though I need to be able to setState from a child componenet which I am unsure of how to do
+import SolutionButtonLength from "./SolutionButtonLength"
 
 function App() {
 	let [solutionWord, setSolutionWord] = useState("default")
-	let solutionWordContext = React.createContext(solutionWord)
 	let alphabet = [
 		"a",
 		"b",
@@ -49,7 +43,7 @@ function App() {
 
 	let solutionWordGenerator = (numOfLetters) => {
 		numberToArray(numOfLetters)
-		return numberArray.map((eachElement) => {
+		numberArray.map((eachElement) => {
 			return (
 				<IndySolutionLetter
 					key={eachElement}
@@ -62,25 +56,23 @@ function App() {
 
 	return (
 		<>
-			<solutionWordContext.Provider value={solutionWord}>
-				<SolutionLengthSlider
-					defaultValue={30}
-					step={10}
-					marks
-					min={10}
-					max={110}
-					disabled
-				/>{" "}
-				<>current solution word is {solutionWord}</>
-				<div className="solution-container">
-					solution placeholder{solutionWordGenerator(7)}
-				</div>
-				<div className="guesedLetters"></div>
-				<div></div>
-				<div className="letter-container">
-					<IndyLetterGen alphabet={alphabet} />
-				</div>
-			</solutionWordContext.Provider>
+			<>current solution word is {solutionWord}</>
+			<div className="solution-container">
+				{solutionWordGenerator(numberArray.length)}
+			</div>
+			Click to change word length
+			<SolutionButtonLength
+				//sets solution word to specified legth
+				setSolutionWord={setSolutionWord}
+				solutionWordGenerator={solutionWordGenerator()}
+			/>
+			<div></div>
+			{/* indySolutionLetter being rendered outside of app func */}
+			<div className="guesedLetters"></div>
+			<div></div>
+			<div className="letter-container">
+				<IndyLetterGen alphabet={alphabet} />
+			</div>
 		</>
 	)
 }
